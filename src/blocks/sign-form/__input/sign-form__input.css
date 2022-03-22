@@ -1,0 +1,14 @@
+.sign-form__input {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    border: none;
+    border-bottom: 1px solid #fff;
+    max-width: 358px;
+    width: 100%;
+    margin: 0 auto 43px;
+    padding: 0 0 13px;
+}
