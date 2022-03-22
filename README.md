@@ -1,8 +1,27 @@
-Around the U.S. project on React, featuring authorization and registration.
+# Around The U.S.
 
-This repository will contain your own front-end project on React with added authorization and registration features.
-Start working with your previously built front end code from Sprint 11.
+**Overview**
 
-All authorization, registration and token requests must go through to the server running on [https://register.nomoreparties.co](https://register.nomoreparties.co/).
+This is a project that showcases an interactive app where users can add, remove, or like photos. This project is made following detailed specifications and Figma.
 
-Good luck!
+## Functionality
+
+This project contains hover effects, links and transitions effects. Main functionality:
+- Add, remove or like photos
+- Edit the name and the role of the user
+- View the preview of the images
+- Javascript form validation
+
+## Technologies
+
+This project is made with HTML5, CSS3, Javascript and React. It contains flexbox, grids, modals and it follows the BEM Methodology with a structured file path organization.
+
+All the informations are fetched from an API and stored in it.
+
+## Plans for finalizing the project
+
+Next step will be to add more functionalities and refactor the code.
+
+## Link of the live project
+
+https://timothyrusso.github.io/around-react/
