@@ -1,8 +1,8 @@
 import React from "react";
 
-function FormRedirect() {
+function FormRedirect({ textLink }) {
     return (
-        <p className="form-redirect"></p>
+        <a className="form-redirect">{textLink}</a>
     )
 }
 

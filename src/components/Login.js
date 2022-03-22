@@ -5,8 +5,8 @@ import FormRedirect from "./FormRedirect";
 function Login() {
     return (
         <>
-            <SignForm />
-            <FormRedirect />
+            <SignForm title="Log in" />
+            <FormRedirect textLink="Not a member yet? Sign up here!" />
         </>
     )
 }
