@@ -188,7 +188,7 @@ function App() {
       <div className="content">
         <Header />
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <Main onEditAvatarClick={handleEditAvatarClick} onEditProfileClick={handleEditProfileClick} onAddPlaceClick={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleConfirmationClick} >
             </Main>
           </Route>
