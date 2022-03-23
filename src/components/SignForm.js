@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignForm() {
+function SignForm({ title }) {
     return (
         <form className="sign-form">
             <h2 className="sign-form__title">{title}</h2>

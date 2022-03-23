@@ -6,7 +6,7 @@ function Login() {
     return (
         <>
             <SignForm title="Log in" />
-            <FormRedirect textLink="Not a member yet? Sign up here!" />
+            <FormRedirect textLink="Not a member yet? Sign up here!" redirectElement="register" />
         </>
     )
 }
