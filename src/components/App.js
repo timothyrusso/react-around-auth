@@ -26,7 +26,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   function handleCardLike(card) {
     // Check one more time if this card was already liked
