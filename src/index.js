@@ -6,7 +6,7 @@ import App from './components/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/around-react-auth">
       <App />
     </BrowserRouter>
   </React.StrictMode>,

@@ -12,6 +12,7 @@ import Register from "./Register";
 import Login from "./Login";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { register, authorize, checkToken } from "../utils/auth";
 
 function App() {
 
