@@ -13,6 +13,14 @@ function Register() {
 
     const history = useNavigate();
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevState) => ({
+          ...prevState,
+          [name]: value,
+        }))
+      }
+
     return (
         <>
             <SignForm title="Sign up" />
