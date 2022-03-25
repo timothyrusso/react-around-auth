@@ -9,15 +9,15 @@ function Header({ loggedIn, currentUser }) {
 
     const pathDefinition = () => {
         switch (location.pathname) {
-            case "/login":
+            case "/signin":
                 linkText = "Sign up";
-                return "/register"
-            case "/register":
+                return "/signup"
+            case "/signup":
                 linkText = "Log in";
-                return "/login"
+                return "/signin"
             case "/":
                 linkText = "Log out";
-                return "/login"
+                return "/signin"
             default:
                 console.log("Invalid path.");
         }

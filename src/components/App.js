@@ -10,6 +10,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeleteConfirmPopup from "./DeleteConfirmPopup";
 import Register from "./Register";
 import Login from "./Login";
+import ProtectedRoute from "./ProtectedRoute";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { register, authorize, checkToken } from "../utils/auth";
@@ -191,9 +192,17 @@ function App() {
       <div className="content">
         <Header loggedIn={loggedIn} currentUser={currentUser} />
         <Routes>
-          <Route exact path="/" element={loggedIn ? <Main onEditAvatarClick={handleEditAvatarClick} onEditProfileClick={handleEditProfileClick} onAddPlaceClick={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleConfirmationClick} /> : <Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            exact path="/"
+            element={
+              <ProtectedRoute loggedIn={loggedIn}>
+                <Main onEditAvatarClick={handleEditAvatarClick} onEditProfileClick={handleEditProfileClick} onAddPlaceClick={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleConfirmationClick} />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" replace />} />
         </Routes>
         <Footer />
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading} startLoading={startLoading} formValidity={formValidity} onFormUpdate={onFormUpdate} onInputUpdate={checkValidity} errorMessage={errorMessage} />
