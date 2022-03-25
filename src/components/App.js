@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -29,6 +29,8 @@ function App() {
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
   const [loggedIn, setLoggedIn] = useState(true);
+
+  const history = useNavigate();
 
   function handleCardLike(card) {
     // Check one more time if this card was already liked
@@ -170,6 +172,19 @@ function App() {
     data ? setFormValidity(true) : setFormValidity(false)
   }
 
+  const handleTokenCheck = () => {
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
+      checkToken(jwt).then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          history.push("/");
+        };
+      }
+      );
+    }
+  }
+
   React.useEffect(() => {
     api.getProfileInfo()
       .then((info) => {
@@ -185,6 +200,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
+    handleTokenCheck();
   }, [])
 
   return (

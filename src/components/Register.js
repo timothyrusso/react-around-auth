@@ -13,8 +13,8 @@ function Register() {
 
     const history = useNavigate();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (evt) => {
+        const { name, value } = evt.target;
         setInputs((prevState) => ({
           ...prevState,
           [name]: value,
