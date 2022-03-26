@@ -28,7 +28,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useNavigate();
 

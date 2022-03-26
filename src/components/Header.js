@@ -19,7 +19,7 @@ function Header({ loggedIn, currentUser }) {
                 linkText = "Log out";
                 return "/signin"
             default:
-                console.log("Invalid path.");
+                return "/"
         }
     }
 
