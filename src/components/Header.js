@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-function Header({ loggedIn, currentUser }) {
+function Header({ loggedIn, currentUser, handleLogout }) {
 
     const location = useLocation();
     let linkText;
@@ -23,12 +23,14 @@ function Header({ loggedIn, currentUser }) {
         }
     }
 
+    console.log(loggedIn);
+
     return (
         <header className="header">
             <img src={logo} alt="Logo representing the Around the US project" className="logo" />
             <div className="header__wrapper">
                 <p className="header__email">{loggedIn && currentUser.email}</p>
-                <Link to={pathDefinition()} className="header__link">{linkText}</Link>
+                <Link to={pathDefinition()} className="header__link" onClick={loggedIn && handleLogout}>{linkText}</Link>
             </div>
         </header>
     )

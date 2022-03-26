@@ -9,9 +9,6 @@ function Register() {
         email: '',
         password: ''
     });
-    const [message, setMessage] = useState("");
-
-    const history = useNavigate();
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;

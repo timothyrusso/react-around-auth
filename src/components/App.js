@@ -28,7 +28,9 @@ function App() {
   const [cards, setCards] = useState([])
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [loginMessage, setLoginMessage] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
 
   const history = useNavigate();
 
@@ -185,6 +187,48 @@ function App() {
     }
   }
 
+  const handleLogin = () => {
+    setLoggedIn(true);
+  }
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+  }
+
+  const handleRegisterSubmit = (evt, inputs) => {
+    evt.preventDefault();
+    const { email, password } = inputs;
+    register(password, email).then((res) => {
+      if (res) {
+        console.log('res OK');
+        history.push('/signin');
+      } else {
+        console.log('Something went wrong.');
+        setRegisterMessage("Something went wrong, please try again.");
+      }
+    })
+      .catch((err) => console.log(err));
+  }
+
+  const handleLoginSubmit = (evt, inputs) => {
+    evt.preventDefault();
+    if (!inputs.username || !inputs.password) {
+      setLoginMessage("Something went wrong, please try again.")
+      return;
+    }
+    authorize(inputs.username, inputs.password)
+      .then((data) => {
+        if (data.jwt) {
+          handleLogin();
+          history.push('/');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setLoginMessage("Something went wrong, please try again.")
+      });
+  }
+
   React.useEffect(() => {
     api.getProfileInfo()
       .then((info) => {
@@ -206,7 +250,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
-        <Header loggedIn={loggedIn} currentUser={currentUser} />
+        <Header loggedIn={loggedIn} currentUser={currentUser} handleLogout={handleLogout} />
         <Routes>
           <Route
             exact path="/"
