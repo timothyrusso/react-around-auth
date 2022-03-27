@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.nomoreparties.co';
+export const BASE_URL = 'https://register.nomoreparties.co';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
@@ -9,8 +9,9 @@ export const register = (password, email) => {
         },
         body: JSON.stringify({ password, email })
     })
-        .then((response) => {
-            return response.json();
+        .then((res) => {
+            console.log(res)
+            return res.json();
         })
         .then((res) => {
             return res;

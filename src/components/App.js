@@ -195,13 +195,11 @@ function App() {
     setLoggedIn(false);
   }
 
-  const handleRegisterSubmit = (evt, inputs) => {
-    evt.preventDefault();
-    const { email, password } = inputs;
+  const handleRegisterSubmit = (password, email) => {
     register(password, email).then((res) => {
       if (res) {
         console.log('res OK');
-        history.push('/signin');
+        history('/signin');
       } else {
         console.log('Something went wrong.');
         setRegisterMessage("Something went wrong, please try again.");
@@ -261,7 +259,7 @@ function App() {
             }
           />
           <Route path="/signin" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
+          <Route path="/signup" element={<Register handleRegisterSubmit={handleRegisterSubmit} />} />
           <Route path="*" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/signin" replace />} />
         </Routes>
         <Footer />

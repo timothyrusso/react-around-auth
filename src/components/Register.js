@@ -3,7 +3,7 @@ import SignForm from "./SignForm";
 import FormRedirect from "./FormRedirect";
 import { useNavigate } from 'react-router-dom';
 
-function Register() {
+function Register({ handleRegisterSubmit }) {
 
     const [inputs, setInputs] = useState({
         email: '',
@@ -13,14 +13,22 @@ function Register() {
     const handleChange = (evt) => {
         const { name, value } = evt.target;
         setInputs((prevState) => ({
-          ...prevState,
-          [name]: value,
+            ...prevState,
+            [name]: value,
         }))
-      }
+    }
+
+console.log(inputs)
+
+    const onRegisterSubmit = (evt) => {
+        const { email, password } = inputs;
+        evt.preventDefault();
+        handleRegisterSubmit(password, email)
+    }
 
     return (
         <>
-            <SignForm title="Sign up" />
+            <SignForm title="Sign up" onRegisterSubmit={onRegisterSubmit} handleChange={handleChange} inputs={inputs}/>
             <FormRedirect textLink="Already a member? Log in here!" redirectElement="signin" />
         </>
     )

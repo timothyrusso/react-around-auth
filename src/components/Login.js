@@ -19,7 +19,7 @@ function Login() {
 
     return (
         <>
-            <SignForm title="Log in" />
+            <SignForm title="Log in" handleChange={handleChange} inputs={inputs} />
             <FormRedirect textLink="Not a member yet? Sign up here!" redirectElement="signup" />
         </>
     )

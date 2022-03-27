@@ -1,11 +1,12 @@
 import React from "react";
 
-function SignForm({ title }) {
+function SignForm({ title, onRegisterSubmit, handleChange, inputs }) {
+
     return (
-        <form className="sign-form">
+        <form className="sign-form" onSubmit={onRegisterSubmit}>
             <h2 className="sign-form__title">{title}</h2>
-            <input className="sign-form__input" id="email-input" name="email" placeholder="Email"></input>
-            <input className="sign-form__input" id="password-input" name="password" placeholder="Password"></input>
+            <input type="email" className="sign-form__input" id="email-input" name="email" placeholder="Email" onChange={handleChange} value={inputs.email}></input>
+            <input type="password" className="sign-form__input" id="password-input" name="password" placeholder="Password" onChange={handleChange} value={inputs.password}></input>
             <button className="sign-form__submit">{title}</button>
         </form>
     )
