@@ -24,4 +24,4 @@ Next step will be to add more functionalities and refactor the code.
 
 ## Link of the live project
 
-https://timothyrusso.github.io/around-react/
+https://timothyrusso.github.io/react-around-auth/

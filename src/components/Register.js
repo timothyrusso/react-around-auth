@@ -20,7 +20,7 @@ function Register({ handleRegisterSubmit }) {
 
 console.log(inputs)
 
-    const onRegisterSubmit = (evt) => {
+    const handleSubmit = (evt) => {
         const { email, password } = inputs;
         evt.preventDefault();
         handleRegisterSubmit(password, email)
@@ -28,7 +28,7 @@ console.log(inputs)
 
     return (
         <>
-            <SignForm title="Sign up" onRegisterSubmit={onRegisterSubmit} handleChange={handleChange} inputs={inputs}/>
+            <SignForm title="Sign up" handleSubmit={handleSubmit} handleChange={handleChange} inputs={inputs}/>
             <FormRedirect textLink="Already a member? Log in here!" redirectElement="signin" />
         </>
     )

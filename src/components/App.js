@@ -208,17 +208,17 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  const handleLoginSubmit = (evt, inputs) => {
-    evt.preventDefault();
-    if (!inputs.username || !inputs.password) {
+  const handleLoginSubmit = (password, email) => {
+    if (!email || !password) {
+      console.log(password)
       setLoginMessage("Something went wrong, please try again.")
       return;
     }
-    authorize(inputs.username, inputs.password)
+    authorize(email, password)
       .then((data) => {
         if (data.jwt) {
           handleLogin();
-          history.push('/');
+          history('/');
         }
       })
       .catch(err => {
@@ -258,7 +258,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Login handleLoginSubmit={handleLoginSubmit} />} />
           <Route path="/signup" element={<Register handleRegisterSubmit={handleRegisterSubmit} />} />
           <Route path="*" element={loggedIn ? <Navigate to="/" replace /> : <Navigate to="/signin" replace />} />
         </Routes>

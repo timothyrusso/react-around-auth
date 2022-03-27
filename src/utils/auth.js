@@ -26,11 +26,15 @@ export const authorize = (password, email) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ password, email })
+        body: JSON.stringify({ email, password })
     })
-        .then((response => response.json()))
+        .then((response) => {
+            console.log(response)
+            response.json()
+        })
         .then((data) => {
-            if (data.user) {
+            if (data.jwt) {
+                console.log(data.jwt);
                 localStorage.setItem('jwt', data.jwt);
                 return data;
             }

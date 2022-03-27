@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignForm from "./SignForm";
 import FormRedirect from "./FormRedirect";
 
-function Login() {
+function Login({ handleLoginSubmit }) {
 
     const [inputs, setInputs] = useState({
         email: '',
@@ -17,9 +17,15 @@ function Login() {
         }))
     }
 
+    const handleSubmit = (evt) => {
+        const { email, password } = inputs;
+        evt.preventDefault();
+        handleLoginSubmit(password, email)
+    }
+
     return (
         <>
-            <SignForm title="Log in" handleChange={handleChange} inputs={inputs} />
+            <SignForm title="Log in" handleSubmit={handleSubmit} handleChange={handleChange} inputs={inputs} />
             <FormRedirect textLink="Not a member yet? Sign up here!" redirectElement="signup" />
         </>
     )
