@@ -11,6 +11,7 @@ import DeleteConfirmPopup from "./DeleteConfirmPopup";
 import Register from "./Register";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
+import InfoTooltip from "./InfoTooltip";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { register, authorize, checkToken } from "../utils/auth";
@@ -31,6 +32,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
   const [registerMessage, setRegisterMessage] = useState("");
+  const [successTooltipOpen, setSuccessTooltipOpen] = useState(false);
 
   const history = useNavigate();
 
@@ -112,6 +114,7 @@ function App() {
     setIsAddPlacePopupOpen(false)
     setIsConfirmationPopupOpen(false)
     setSelectedCard(undefined)
+    setSuccessTooltipOpen(false)
   }
 
   function handleUpdateUser(currentUser) {
@@ -177,6 +180,7 @@ function App() {
   const handleTokenCheck = () => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
+      console.log(localStorage);
       checkToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
@@ -201,6 +205,7 @@ function App() {
     register(password, email).then((res) => {
       if (res) {
         console.log('res OK');
+        setSuccessTooltipOpen(true);
         history('/signin');
       } else {
         console.log('Something went wrong.');
@@ -249,7 +254,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
-        <Header loggedIn={loggedIn} currentUser={currentUser} handleLogout={handleLogout} />
+        <Header loggedIn={loggedIn} currentUser={currentUser} handleLogout={handleLogout} userEmail={localStorage.email} />
         <Routes>
           <Route
             exact path="/"
@@ -269,6 +274,8 @@ function App() {
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading} startLoading={startLoading} formValidity={formValidity} onFormUpdate={onFormUpdate} errorMessage={errorMessage} onInputUpdate={checkValidity} />
         <DeleteConfirmPopup isOpen={isConfirmationPopupOpen} onClose={closeAllPopups} card={selectedDeleteCard} deleteCard={handleCardDelete} isLoading={isLoading} startLoading={startLoading} />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <InfoTooltip isOpen={successTooltipOpen} onClose={closeAllPopups} />
+
       </div>
     </CurrentUserContext.Provider>
   );
