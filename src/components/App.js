@@ -28,7 +28,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
   const [registerMessage, setRegisterMessage] = useState("");
 
@@ -180,7 +180,7 @@ function App() {
       checkToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
-          history.push("/");
+          history("/");
         };
       }
       );
@@ -193,6 +193,8 @@ function App() {
 
   const handleLogout = () => {
     setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    history('/signin');
   }
 
   const handleRegisterSubmit = (password, email) => {
@@ -241,7 +243,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-    // handleTokenCheck();
+    handleTokenCheck();
   }, [])
 
   return (
