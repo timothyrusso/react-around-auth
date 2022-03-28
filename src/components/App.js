@@ -209,19 +209,18 @@ function App() {
   }
 
   const handleLoginSubmit = (password, email) => {
-    if (!email || !password) {
-      console.log(password)
+    if (!password || !email) {
       setLoginMessage("Something went wrong, please try again.")
       return;
     }
-    authorize(email, password)
+    authorize(password, email)
       .then((data) => {
-        if (data.jwt) {
+        if (data.token) {
           handleLogin();
           history('/');
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setLoginMessage("Something went wrong, please try again.")
       });
@@ -242,7 +241,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-    handleTokenCheck();
+    // handleTokenCheck();
   }, [])
 
   return (

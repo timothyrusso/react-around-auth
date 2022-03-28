@@ -26,20 +26,23 @@ export const authorize = (password, email) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ password, email })
     })
-        .then((response) => {
-            console.log(response)
-            response.json()
+        .then((res) => {
+            return res.json()
         })
         .then((data) => {
-            if (data.jwt) {
-                console.log(data.jwt);
-                localStorage.setItem('jwt', data.jwt);
+            if (data.token) {
+                localStorage.setItem('jwt', data.token);
+                localStorage.setItem('email', email);
+                console.log(localStorage)
                 return data;
+            } else {
+                return
             }
-        })
-        .catch(err => console.log(err))
+        }
+        )
+        .catch((err) => console.log(err))
 };
 
 export const checkToken = (token) => {
