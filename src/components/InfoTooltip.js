@@ -1,10 +1,12 @@
 import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import Popup from "./Popup";
 
-function InfoTooltip({ isOpen, onClose }) {
+function InfoTooltip({ successOpen, failedOpen, onClose }) {
 
     return (
-        <PopupWithForm name="info" title="Are you sure?" confirmationTitleClass={"popup__title_type_delete-card"} isOpen={isOpen} onClose={onClose} />
+        <Popup isOpen={successOpen ? successOpen : failedOpen} onClose={onClose}>
+            <h2 className="popup__title" >{successOpen ? "Success! You have now been registered." : "Oops, something went wrong! Please try again."}</h2>
+        </Popup>
     )
 }
 

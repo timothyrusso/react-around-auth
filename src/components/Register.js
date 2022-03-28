@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SignForm from "./SignForm";
 import FormRedirect from "./FormRedirect";
-import { useNavigate } from 'react-router-dom';
 
 function Register({ handleRegisterSubmit }) {
 
@@ -17,8 +16,6 @@ function Register({ handleRegisterSubmit }) {
             [name]: value,
         }))
     }
-
-console.log(inputs)
 
     const handleSubmit = (evt) => {
         const { email, password } = inputs;
