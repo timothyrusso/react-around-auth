@@ -9,6 +9,8 @@
     border-bottom: 1px solid #fff;
     max-width: 358px;
     width: 100%;
-    margin: 0 auto 43px;
+    margin: 30px auto 0;
     padding: 0 0 13px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
 }
