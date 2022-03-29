@@ -30,8 +30,8 @@ function App() {
   const [formValidity, setFormValidity] = useState(true)
   const [errorMessage, setErrorMessage] = useState({})
   const [loggedIn, setLoggedIn] = useState(false);
-  const [successTooltipOpen, setSuccessTooltipOpen] = useState(false);
-  const [failedTooltipOpen, setFailedTooltipOpen] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const [status, setStatus] = useState("")
 
   const history = useNavigate();
 
@@ -113,8 +113,7 @@ function App() {
     setIsAddPlacePopupOpen(false)
     setIsConfirmationPopupOpen(false)
     setSelectedCard(undefined)
-    setFailedTooltipOpen(false)
-    setSuccessTooltipOpen(false)
+    setTooltipOpen(false)
   }
 
   function handleUpdateUser(currentUser) {
@@ -203,25 +202,33 @@ function App() {
 
   const handleRegisterSubmit = (password, email) => {
     register(password, email).then((res) => {
+      if (!res) {
+        console.log("problem")
+      } 
       if (res.data._id) {
         console.log('res OK');
         console.log(res.data)
-        setSuccessTooltipOpen(true);
+        setStatus("success");
+        setTooltipOpen(true);
         history('/signin');
       } else {
         console.log(res.ok)
         console.log('Something went wrong.');
-        setFailedTooltipOpen(true);
+        setStatus("failed");
+        setTooltipOpen(true);
       }
     })
       .catch((err) => {
         console.log(err);
+        setStatus("failed");
+        setTooltipOpen(true);
       });
   }
 
   const handleLoginSubmit = (password, email) => {
     if (!password || !email) {
-      setFailedTooltipOpen(true);
+      setStatus("failed");
+      setTooltipOpen(true);
       return;
     }
     authorize(password, email)
@@ -233,7 +240,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setFailedTooltipOpen(true);
+        setStatus("failed");
+        setTooltipOpen(true);
       });
   }
 
@@ -278,7 +286,7 @@ function App() {
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading} startLoading={startLoading} formValidity={formValidity} onFormUpdate={onFormUpdate} errorMessage={errorMessage} onInputUpdate={checkValidity} />
         <DeleteConfirmPopup isOpen={isConfirmationPopupOpen} onClose={closeAllPopups} card={selectedDeleteCard} deleteCard={handleCardDelete} isLoading={isLoading} startLoading={startLoading} />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-        <InfoTooltip successOpen={successTooltipOpen} failedOpen={failedTooltipOpen} onClose={closeAllPopups} />
+        <InfoTooltip isOpen={tooltipOpen} onClose={closeAllPopups} status={status} />
 
       </div>
     </CurrentUserContext.Provider>
