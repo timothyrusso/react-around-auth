@@ -48,3 +48,7 @@
 @import url(./blocks/sign-form/__submit/sign-form__submit.css);
 @import url(./blocks/sign-form/__title/sign-form__title.css);
 @import url(./blocks/form-redirect/form-redirect.css);
+@import url(./blocks/info-tooltip/info-tooltip.css);
+@import url(./blocks/info-tooltip/__message/info-tooltip__message.css);
+@import url(./blocks/info-tooltip/__icon/info-tooltip__icon.css);
+@import url(./blocks/info-tooltip/__wrapper/info-tooltip__wrapper.css);

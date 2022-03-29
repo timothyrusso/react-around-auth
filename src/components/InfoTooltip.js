@@ -7,18 +7,18 @@ function InfoTooltip({ isOpen, onClose, status }) {
 
     return (
         <Popup isOpen={isOpen} onClose={onClose}>
-            <h2 className="popup__title" >{
+            <div className="info-tooltip" >{
                 status === "success" ?
-                    <div>
-                        <img src={successImage} alt="Success icon"></img>
-                        <p>Success! You have now been registered.</p>
+                    <div className="info-tooltip__wrapper">
+                        <img src={successImage} alt="Success icon" className="info-tooltip__icon"></img>
+                        <p className="info-tooltip__message">Success! You have now been registered.</p>
                     </div>
                     :
-                    <div>
-                        <img src={failedImage} alt="Failed icon"></img>
-                        <p>Oops, something went wrong! Please try again.</p>
+                    <div className="info-tooltip__wrapper">
+                        <img src={failedImage} alt="Failed icon" className="info-tooltip__icon"></img>
+                        <p className="info-tooltip__message">Oops, something went wrong! Please try again.</p>
                     </div>
-            }</h2>
+            }</div>
         </Popup>
     )
 }
