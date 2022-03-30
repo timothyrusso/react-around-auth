@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-function Header({ loggedIn, handleLogout, userEmail }) {
-
-    const [toggleMenu, setToggleMenu] = useState(false);
+function Header({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) {
 
     const location = useLocation();
 
     let linkText;
-
-    const toggleNav = () => {
-        setToggleMenu(!toggleMenu)
-    }
 
     const pathDefinition = () => {
         switch (location.pathname) {

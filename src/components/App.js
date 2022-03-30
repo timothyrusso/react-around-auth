@@ -31,7 +31,8 @@ function App() {
   const [errorMessage, setErrorMessage] = useState({})
   const [loggedIn, setLoggedIn] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("");
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   const history = useNavigate();
 
@@ -191,12 +192,17 @@ function App() {
     }
   }
 
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu)
+  }
+
   const handleLogin = () => {
     setLoggedIn(true);
   }
 
   const handleLogout = () => {
     setLoggedIn(false);
+    setToggleMenu(false);
     localStorage.removeItem('jwt');
     history('/signin');
   }
@@ -267,7 +273,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
-        <Header loggedIn={loggedIn} handleLogout={handleLogout} userEmail={localStorage.email} />
+        <Header loggedIn={loggedIn} handleLogout={handleLogout} userEmail={localStorage.email} toggleNav={toggleNav} toggleMenu={toggleMenu} />
         <Routes>
           <Route
             exact path="/"
