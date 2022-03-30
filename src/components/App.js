@@ -177,16 +177,17 @@ function App() {
   }
 
   const handleTokenCheck = () => {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      console.log(localStorage);
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
       checkToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
           history("/");
-        };
-      }
-      );
+        } else {
+          localStorage.removeItem("jvt")
+        }
+      })
+        .catch((err) => console.log(err))
     }
   }
 
@@ -204,7 +205,7 @@ function App() {
     register(password, email).then((res) => {
       if (!res) {
         console.log("problem")
-      } 
+      }
       if (res.data._id) {
         console.log('res OK');
         console.log(res.data)
