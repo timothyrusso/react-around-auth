@@ -30,7 +30,7 @@ function Header({ loggedIn, currentUser, handleLogout, userEmail }) {
             <img src={logo} alt="Logo representing the Around the US project" className="logo" />
             <div className="header__wrapper">
                 <p className="header__email">{loggedIn && userEmail}</p>
-                <Link to={pathDefinition()} className="header__link" onClick={loggedIn && handleLogout}>{linkText}</Link>
+                <Link to={pathDefinition()} className={`header__link ${loggedIn ? "header__link_type_logout" : ""}`} onClick={loggedIn && handleLogout}>{linkText}</Link>
             </div>
         </header>
     )

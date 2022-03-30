@@ -26,7 +26,7 @@ function Login({ handleLoginSubmit }) {
     return (
         <>
             <SignForm title="Log in" handleSubmit={handleSubmit} handleChange={handleChange} inputs={inputs} />
-            <FormRedirect textLink="Not a member yet? Sign up here!" redirectElement="signup" />
+            <FormRedirect text="Not a member yet? " textLink="Sign up here!" redirectElement="signup" />
         </>
     )
 }

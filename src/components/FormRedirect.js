@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-function FormRedirect({ textLink, redirectElement }) {
+function FormRedirect({ text, textLink, redirectElement }) {
     return (
-        <Link to={`/${redirectElement}`} className="form-redirect">{textLink}</Link>
+        <p className="form-redirect">{text}<Link to={`/${redirectElement}`} className="form-redirect_type_link">{textLink}</Link></p>
     )
 }
 

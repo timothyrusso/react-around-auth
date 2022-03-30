@@ -26,7 +26,7 @@ function Register({ handleRegisterSubmit }) {
     return (
         <>
             <SignForm title="Sign up" handleSubmit={handleSubmit} handleChange={handleChange} inputs={inputs}/>
-            <FormRedirect textLink="Already a member? Log in here!" redirectElement="signin" />
+            <FormRedirect text={"Already a member? "} textLink="Log in here!" redirectElement="signin" />
         </>
     )
 }
