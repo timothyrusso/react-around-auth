@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Popup = ({ isOpen, name, onClose, previewClass, children }) => {
+const Popup = ({ isOpen, name, onClose, previewClass, infoTooltip, children }) => {
   // here is `useEffect` for the `Escape` listener
   useEffect(() => {
     // with this we prevent adding the listener if the popup is not opened
@@ -33,7 +33,7 @@ const Popup = ({ isOpen, name, onClose, previewClass, children }) => {
         {/* here will be anything you add as `children`*/}
         {children}
         {/* add the close button */}
-        <button aria-label="Close" type="button" className="close-button" onClick={onClose}></button>
+        <button aria-label="Close" type="button" className={`close-button ${infoTooltip ? "close-button_type_info" : ""}`} onClick={onClose}></button>
       </div>
     </div>
   );

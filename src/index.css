@@ -40,6 +40,7 @@
 @import url(./blocks/popup/__error/_visible/popup__error_visible.css);
 @import url(./blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(./blocks/close-button/close-button.css);
+@import url(./blocks/close-button/_type/close-button_type_info.css);
 @import url(./blocks/submit-button/submit-button.css);
 @import url(./blocks/submit-button/_disabled/submit-button_disabled.css);
 @import url(./blocks/submit-button/_type/submit-button_type_delete-card.css);

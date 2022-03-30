@@ -6,7 +6,7 @@ import failedImage from "../images/failed.svg"
 function InfoTooltip({ isOpen, onClose, status }) {
 
     return (
-        <Popup isOpen={isOpen} onClose={onClose}>
+        <Popup isOpen={isOpen} onClose={onClose} infoTooltip={true}>
             <div className="info-tooltip" >{
                 status === "success" ?
                     <div className="info-tooltip__wrapper">
