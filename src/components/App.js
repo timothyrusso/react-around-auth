@@ -267,7 +267,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="content">
-        <Header loggedIn={loggedIn} currentUser={currentUser} handleLogout={handleLogout} userEmail={localStorage.email} />
+        <Header loggedIn={loggedIn} handleLogout={handleLogout} userEmail={localStorage.email} />
         <Routes>
           <Route
             exact path="/"

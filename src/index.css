@@ -56,3 +56,6 @@
 @import url(./blocks/info-tooltip/__message/info-tooltip__message.css);
 @import url(./blocks/info-tooltip/__icon/info-tooltip__icon.css);
 @import url(./blocks/info-tooltip/__wrapper/info-tooltip__wrapper.css);
+@import url(./blocks/burger-button/burger-button.css);
+@import url(./blocks/burger-button/_type/burger-button_type_open.css);
+@import url(./blocks/mobile-navbar/mobile-navbar.css);

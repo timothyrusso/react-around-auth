@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import Input from "./Input";
 
-function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) {
+const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) => {
 
   const [cardName, setCardName] = useState('')
   const [link, setLink] = useState('')
 
-  function handleNameCardChange(evt) {
+  const handleNameCardChange = (evt) => {
     onInputUpdate(evt)
     setCardName(evt.target.value)
   }
