@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 
 function Header({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) {
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
     const location = useLocation();
 
@@ -24,10 +26,18 @@ function Header({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) {
         }
     }
 
+    useEffect(() => {
+        const changeWidth = () => {
+            setScreenWidth(window.innerWidth);
+        }
+        window.addEventListener('resize', changeWidth)
+    }, [])
+
     return (
         <>
-            {loggedIn && toggleMenu &&
-                <div className="mobile-navbar"><p className="header__email">{loggedIn && userEmail}</p>
+            {loggedIn && toggleMenu && screenWidth < 552 &&
+                <div className="mobile-navbar">
+                    <p className={`header__email ${toggleMenu ? "header__email_type_mobile" : ""}`}>{loggedIn && userEmail}</p>
                     <Link to={pathDefinition()} className={`header__link ${loggedIn ? "header__link_type_logout" : ""}`} onClick={loggedIn && handleLogout}>{linkText}</Link>
                 </div>}
             <header className="header">

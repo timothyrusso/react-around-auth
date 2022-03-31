@@ -1,3 +1,5 @@
 .burger-button_type_open {
     background-image: url(../../../images/close-button.svg);
+    max-width: 40px;
+    min-height: 40px;
 }
