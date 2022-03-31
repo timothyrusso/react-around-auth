@@ -2,7 +2,8 @@ import React from "react";
 import Popup from "./Popup";
 import Form from "./Form";
 
-function PopupWithForm({ name, title, isOpen, onClose, buttonText, confirmationButtonClass, confirmationTitleClass, onSubmit, loadingText, isLoading, formValidity, onFormUpdate, children }) {
+const PopupWithForm = ({ name, title, isOpen, onClose, buttonText, confirmationButtonClass, confirmationTitleClass, onSubmit, loadingText, isLoading, formValidity, onFormUpdate, children }) => {
+  
   return (
     <Popup isOpen={isOpen} name={name} onClose={onClose}>
       <Form name={`myForm${name}`} onSubmit={onSubmit} onFormUpdate={onFormUpdate}>

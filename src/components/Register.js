@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignForm from "./SignForm";
 import FormRedirect from "./FormRedirect";
 
-function Register({ handleRegisterSubmit }) {
+const Register = ({ handleRegisterSubmit }) => {
 
     const [inputs, setInputs] = useState({
         email: '',

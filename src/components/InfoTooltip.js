@@ -3,7 +3,7 @@ import Popup from "./Popup";
 import successImage from "../images/success.svg"
 import failedImage from "../images/failed.svg"
 
-function InfoTooltip({ isOpen, onClose, status }) {
+const InfoTooltip = ({ isOpen, onClose, status }) => {
 
     return (
         <Popup isOpen={isOpen} onClose={onClose} infoTooltip={true}>

@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 
-function Form({ name, onSubmit, onFormUpdate, children }) {
+const Form = ({ name, onSubmit, onFormUpdate, children }) => {
 
   const formRef = useRef()
 
-  function handleFormValidity() {
+  const handleFormValidity = () => {
     const formValidityBoolean = formRef.current.checkValidity()
     onFormUpdate(formValidityBoolean)
   }

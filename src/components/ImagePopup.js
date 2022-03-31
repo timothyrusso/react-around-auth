@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "./Popup";
 
-function ImagePopup({ card, onClose }) {
+const ImagePopup = ({ card, onClose }) => {
 
   return (
     <Popup isOpen={card} name="preview" onClose={onClose} previewClass={true}>

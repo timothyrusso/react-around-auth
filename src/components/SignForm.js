@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignForm({ title, handleSubmit, handleChange, inputs }) {
+const SignForm = ({ title, handleSubmit, handleChange, inputs }) => {
 
     return (
         <form className="sign-form" onSubmit={handleSubmit}>

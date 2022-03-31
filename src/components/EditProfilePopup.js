@@ -46,5 +46,4 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoadi
   )
 }
 
-
 export default EditProfilePopup;

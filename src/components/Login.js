@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignForm from "./SignForm";
 import FormRedirect from "./FormRedirect";
 
-function Login({ handleLoginSubmit }) {
+const Login = ({ handleLoginSubmit }) => {
 
     const [inputs, setInputs] = useState({
         email: '',
