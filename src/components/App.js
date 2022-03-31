@@ -34,6 +34,8 @@ const App = () => {
   const [status, setStatus] = useState("");
   const [toggleMenu, setToggleMenu] = useState(false);
 
+console.log(currentUser)
+
   const history = useNavigate();
 
   const handleCardLike = (card) => {
@@ -215,6 +217,7 @@ const App = () => {
     }
     authorize(password, email)
       .then((data) => {
+        console.log(data)
         if (data.token) {
           handleLogin();
           history('/');
