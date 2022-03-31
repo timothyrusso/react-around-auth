@@ -4,24 +4,24 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Input from "./Input";
 
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, startLoading, formValidity, onFormUpdate, onInputUpdate, errorMessage }) {
+const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoading, formValidity, onFormUpdate, onInputUpdate, errorMessage }) => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
   const currentUser = useContext(CurrentUserContext)
 
-  function handleNameChange(evt) {
+  const handleNameChange = (evt) => {
     onInputUpdate(evt)
     setName(evt.target.value);
   }
 
-  function handleDescriptionChange(evt) {
+  const handleDescriptionChange = (evt) => {
     onInputUpdate(evt)
     setDescription(evt.target.value);
   }
 
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     startLoading()
     // Prevent the browser from navigating to the form address
     evt.preventDefault();

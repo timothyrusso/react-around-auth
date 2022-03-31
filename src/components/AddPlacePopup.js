@@ -12,12 +12,12 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoad
     setCardName(evt.target.value)
   }
 
-  function handleLinkChange(evt) {
+  const handleLinkChange = (evt) => {
     onInputUpdate(evt)
     setLink(evt.target.value)
   }
 
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     startLoading()
     evt.preventDefault()
     onAddPlaceSubmit({ cardName, link })

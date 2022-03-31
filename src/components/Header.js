@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-function Header({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) {
+const Header = ({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
