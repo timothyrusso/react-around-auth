@@ -34,8 +34,6 @@ const App = () => {
   const [status, setStatus] = useState("");
   const [toggleMenu, setToggleMenu] = useState(false);
 
-console.log(currentUser)
-
   const history = useNavigate();
 
   const handleCardLike = (card) => {
@@ -186,17 +184,12 @@ console.log(currentUser)
 
   const handleRegisterSubmit = (password, email) => {
     register(password, email).then((res) => {
-      if (!res) {
-        console.log("problem")
-      }
       if (res.data._id) {
         console.log('res OK');
-        console.log(res.data)
         setStatus("success");
         setTooltipOpen(true);
         history('/signin');
       } else {
-        console.log(res.ok)
         console.log('Something went wrong.');
         setStatus("failed");
         setTooltipOpen(true);
@@ -217,7 +210,6 @@ console.log(currentUser)
     }
     authorize(password, email)
       .then((data) => {
-        console.log(data)
         if (data.token) {
           handleLogin();
           history('/');
