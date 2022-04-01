@@ -183,23 +183,24 @@ const App = () => {
   }
 
   const handleRegisterSubmit = (password, email) => {
-    register(password, email).then((res) => {
-      if (res.data._id) {
-        console.log('res OK');
-        setStatus("success");
-        setTooltipOpen(true);
-        history('/signin');
-      } else {
-        console.log('Something went wrong.');
-        setStatus("failed");
-        setTooltipOpen(true);
-      }
-    })
+    register(password, email)
+      .then((res) => {
+        if (res.data._id) {
+          console.log('res OK');
+          setStatus("success");
+          history('/signin');
+        } else {
+          console.log('Something went wrong.');
+          setStatus("failed");
+        }
+      })
       .catch((err) => {
         console.log(err);
         setStatus("failed");
+      })
+      .finally(() => {
         setTooltipOpen(true);
-      });
+      })
   }
 
   const handleLoginSubmit = (password, email) => {
@@ -219,7 +220,7 @@ const App = () => {
         console.log(err);
         setStatus("failed");
         setTooltipOpen(true);
-      });
+      })
   }
 
   React.useEffect(() => {

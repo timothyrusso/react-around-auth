@@ -31,6 +31,7 @@ const Header = ({ loggedIn, handleLogout, userEmail, toggleMenu, toggleNav }) =>
             setScreenWidth(window.innerWidth);
         }
         window.addEventListener('resize', changeWidth)
+        return () => window.removeEventListener('resize', changeWidth)
     }, [])
 
     return (
