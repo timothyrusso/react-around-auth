@@ -28,7 +28,6 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoad
     setLink('');
   }, [isOpen]);
 
-
   return (
     <PopupWithForm name="add" title="New place" isOpen={isOpen} onClose={onClose} buttonText={"Create"} loadingText={"Saving.."} isLoading={isLoading} onSubmit={handleSubmit} formValidity={formValidity} onFormUpdate={onFormUpdate}>
       <Input type={"text"} idName={"title-input"} name={"title"} fieldName={"field_title"} placeholder={"Title"} minLength={"2"} maxLength={"30"} value={cardName} onChange={handleNameCardChange} errorMessage={errorMessage} />
